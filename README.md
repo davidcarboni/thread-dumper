@@ -15,25 +15,25 @@ Requirements:
 
 Build:
 
- mvn assembly:assembly
+    mvn assembly:assembly
 
 Run:
 
- java -jar thread-dumper-1.0.0-jar-with-dependencies.jar <pid> [search terms]
+    java -jar thread-dumper-1.0.0-jar-with-dependencies.jar &lt;pid&gt; [search terms]
 
 Search terms:
 
  If you provide no search terms, thread-dumper will print out a full thread dump every second.
  Thread-dumper will show any "blocks of text" - typically thread stacks - that contain the search terms you specify.
- If you need to suppress something, use -<search term>.
+ If you need to suppress something, use -&lt;search term&gt;.
  
 Examples:
 
-  java -jar thread-dumper-1.0.0-jar-with-dependencies.jar 6884 +com.mypackage -com.mypackage.BackgroundProcessor
+    java -jar thread-dumper-1.0.0-jar-with-dependencies.jar 6884 +com.mypackage -com.mypackage.BackgroundProcessor
   
-   is equivalent to:
+is equivalent to:
    
-  java -jar thread-dumper-1.0.0-jar-with-dependencies.jar 6884 com.mypackage -com.mypackage.BackgroundProcessor
+    java -jar thread-dumper-1.0.0-jar-with-dependencies.jar 6884 com.mypackage -com.mypackage.BackgroundProcessor
 
 I hope it's as useful for you as it is for me.
 
