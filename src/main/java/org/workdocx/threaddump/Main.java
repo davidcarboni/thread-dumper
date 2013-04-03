@@ -10,16 +10,33 @@ import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.exception.ExceptionUtils;
 
+/**
+ * This is how you run it.
+ * 
+ * @author David Carboni
+ * 
+ */
 public class Main {
 
+	/** The OS command which will be invoked in order to get a JVM thread dump. */
 	public static final String COMMAND = "jstack";
+
+	/** The interval in milliseconds between JVM thread dumps. */
 	public static final long INTERVAL = 1000;
 
 	private static int pid;
-	private static List<String> searches = new ArrayList<>();
-	private static List<String> excludes = new ArrayList<>();
+	private static List<String> searches = new ArrayList<String>();
+	private static List<String> excludes = new ArrayList<String>();
 	private static InputStream inputStream;
 
+	/**
+	 * Starts the process of taking thread dumps.
+	 * 
+	 * @param args
+	 *            Define the pid and search terms.
+	 * @throws IOException
+	 *             If an error occurs.
+	 */
 	public static void main(String[] args) throws IOException {
 		readParameters(args);
 		dump();
@@ -88,8 +105,8 @@ public class Main {
 	}
 
 	private static List<List<String>> splitThreads(List<String> readLines) {
-		List<List<String>> result = new ArrayList<>();
-		List<String> thread = new ArrayList<>();
+		List<List<String>> result = new ArrayList<List<String>>();
+		List<String> thread = new ArrayList<String>();
 		result.add(thread);
 
 		int i = 0;
@@ -104,7 +121,7 @@ public class Main {
 			// Create a new list for the next thread:
 			if (i < readLines.size() && result.get(result.size() - 1).size() != 0) {
 //				System.out.println("Next thread..");
-				thread = new ArrayList<>();
+				thread = new ArrayList<String>();
 				result.add(thread);
 				i++;
 			}
